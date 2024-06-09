@@ -13,7 +13,11 @@ public class App {
         if (numbers.length() == 0 ) {
             return 0 ;
         }        
-
-        return 0;
+        int addVal = 0 ;
+        String[] str = numbers.trim().split(",");
+        for (String val : str) {
+            addVal += Integer.parseInt(val);
+        }
+        return addVal;
     }
 }
