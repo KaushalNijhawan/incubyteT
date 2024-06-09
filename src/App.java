@@ -7,11 +7,15 @@ public class App {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         System.out.println("Enter the numbers below you want to add !");
         String numbers  = br.readLine();
-
-        System.out.println(add("//;\n1;2"));
+        try {
+            System.out.println(add("//;\n1;2,-1,2,-2"));    
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+        
     }
 
-    public static int add(String numbers){
+    public static int add(String numbers) throws Exception{
         if (numbers.length() == 0 ) {
             return 0 ;
         }
@@ -28,13 +32,22 @@ public class App {
 
         // check for delimetres
         
+        StringBuilder negativeNumberString = new StringBuilder("");
 
         for (String val : str) {
             if (val.equals("")) {
                 addVal += 0;
             }else{
-                addVal+= Integer.parseInt(val);
+                int valCurrent = Integer.parseInt(val);
+                if (valCurrent < 0 ) {
+                    negativeNumberString.append(valCurrent);
+                    negativeNumberString.append(",");
+                }
+                addVal += valCurrent;
             }
+        }
+        if (negativeNumberString.length() > 0 ) {
+            throw new NumberFormatException("negative numbers not allowed " + negativeNumberString.toString().substring(0, negativeNumberString.length()-1));
         }
         return addVal;
     }

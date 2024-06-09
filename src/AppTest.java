@@ -1,3 +1,5 @@
+import static org.junit.Assert.assertThrows;
+
 import org.junit.*;
 
 public class AppTest{
@@ -24,5 +26,14 @@ public class AppTest{
     public void checkForDelimetres(){
         App app = new App();
         Assert.assertEquals(3 , app.add("//;\n1;2")) ;
+    }
+
+    @Test()
+    public void negativeNumberCheck(){
+        App app = new App();
+        NumberFormatException exception = Assert.assertThrows(NumberFormatException.class, ()->{
+            app.add("//;\n1;2,-1,2,-2");
+        });
+        Assert.assertEquals("negative numbers not allowed -1,-2", exception.getMessage());
     }
 }
