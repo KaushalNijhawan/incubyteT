@@ -1,5 +1,3 @@
-import static org.junit.Assert.assertThrows;
-
 import org.junit.*;
 
 public class AppTest{
