@@ -19,4 +19,10 @@ public class AppTest{
         App app = new App();
         Assert.assertEquals(12 , app.add("1\n2,2,3,4")) ;
     }
+
+    @Test()
+    public void checkForDelimetres(){
+        App app = new App();
+        Assert.assertEquals(3 , app.add("//;\n1;2")) ;
+    }
 }
