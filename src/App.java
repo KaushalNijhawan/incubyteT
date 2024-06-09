@@ -14,7 +14,10 @@ public class App {
             return 0 ;
         }        
         int addVal = 0 ;
+        numbers = numbers.replaceAll("\n", ",");
         String[] str = numbers.trim().split(",");
+
+
         for (String val : str) {
             addVal += Integer.parseInt(val);
         }
